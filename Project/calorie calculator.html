@@ -119,18 +119,32 @@
 
         <output  id = "needed_calorie_gain_weight">  Your needed calories to gain weight is :  </output>  
 
-<img id = "total_calorie" src=" file:///C:/Users/ahmed/OneDrive/Bureau/Project/Image/total%20calorie%20.png" alt=" total calorie ">
+ <div class="total_calorie_div">  </div>
 
-<img id = "lower_calorie" src="file:///C:/Users/ahmed/OneDrive/Bureau/Project/Image/low_calorie%20.png" alt=" lower calorie ">
+  <img id = "total_calorie" src=" file:///C:/Users/ahmed/OneDrive/Bureau/Solo%20Project/Solo-projects/Project/Image/total%20calorie%20.png" 
+  alt=" total calorie ">
+ </div>
+ 
 
-<img id = "hight_calorie" src=" file:///C:/Users/ahmed/OneDrive/Bureau/Project/Image/hight_calorie.png" alt=" high calorie ">
 
+
+ <div class="lower_calorie_div" > 
+  <img id = "lower_calorie" src="file:///C:/Users/ahmed/OneDrive/Bureau/Solo%20Project/Solo-projects/Project/Image/low_calorie%20.png" alt=" lower calorie ">
+ </div>
+
+
+
+<div class = hight_calorie_div> 
+<img id = "hight_calorie" src=" file:///C:/Users/ahmed/OneDrive/Bureau/Solo%20Project/Solo-projects/Project/Image/hight_calorie.png" alt=" high calorie ">
+</div>
 
             </div>
 
         </section>
 
-        <footer class="footer"> </footer>
+        <footer class="footer"> 
+      Calorie Calculator
+        </footer>
 
     </main>
    
@@ -141,10 +155,13 @@
   <script> 
 // this functions to hide 3 picture in the begening 
 
+
 $("#total_calorie").hide()
 $("#lower_calorie") .hide()
 $("#hight_calorie") .hide()
 
+// this functions to hide the div who contain the picture 
+$(".total_calorie_div").hide()
 
   // this function allow us to store the input age
   var age=" "
@@ -199,7 +216,7 @@ $("#button_calculate").on("click" , function () {
      result = (9.5634 * weight) + (184.96 * tall) - (4.6756 * age) + 655.0955 }
    })
 
-   //This function checks from the user choice about his activity and do the formulation needed
+   //This function checks from the user choice about his activity and do the formulation needed and show the picture 
 
 $("#button_calculate").on("click" , function () { 
   if (selected_activity == "Not very active") {  result =result *1.3 }
@@ -210,26 +227,29 @@ $("#button_calculate").on("click" , function () {
 
   else if (selected_activity == "Very active " ) {result =result *1.9}
 
-  $("#needed_calorie").append(Math.floor(result) + " Calories ")
-  $("#total_calorie") .show()
-
+  $("#needed_calorie").html("Your total needed calories is : "+  Math.floor(result) + " Calories ")
+  $(".total_calorie_div").show()
+  $(".total_calorie_div").append( "<img id = total_calorie src= file:///C:/Users/ahmed/OneDrive/Bureau/Solo%20Project/Solo-projects/Project/Image/total%20calorie%20.png  alt= total calorie>")
+  $(".total_calorie_div").append("To Maintain Your Weight You Need :" +  Math.floor(result) +" Calories " )
 })
 
 
  //This function reduce the total calories by 15% to loose weight 
 
 $("#button_calculate_lose_weight").on("click" , function () {
-  $("#needed_calorie_lose_weight").append((     Math.floor(result = result -(result *15/100)) + " Calories "))
-  $("#lower_calorie") .show()
+  $("#needed_calorie_lose_weight").html(( "Your needed calories to lose weight is :"+ Math.floor(result = result -(result *15/100)) + " Calories "))
+  $(".total_calorie_div").html( "<img id =lower_calorie src=file:///C:/Users/ahmed/OneDrive/Bureau/Solo%20Project/Solo-projects/Project/Image/low_calorie%20.png  alt= lower calorie >")
+  $(".total_calorie_div").append("To Lose Weight You Need :" + Math.floor(result) + " Calories " )
+
 })
 
-//This function add  15%  to total calories to gain  weight 
+//This function add  15%  ( 15% to add + 15% that reduced befor = 30%) to total calories to gain  weight 
 
 $("#button_calculate_gain_weight").on("click" , function () {
- $("#needed_calorie_gain_weight").append((     Math.floor(result = result -(result *30/100)) + " Calories "))
- $("#hight_calorie") .show()
+ $("#needed_calorie_gain_weight").html(( "Your needed calories to gain weight is :" +   Math.floor(result = result +(result *30/100)) + " Calories "))
+ $(".total_calorie_div").html( "<img id =hight_calorie src=file:///C:/Users/ahmed/OneDrive/Bureau/Solo%20Project/Solo-projects/Project/Image/hight_calorie.png  alt= high calorie >")
+ $(".total_calorie_div").append("To Gain More Weight You Need :" + Math.floor(result) + " Calories ")
 })
 
- 
   </script>
 </html>
