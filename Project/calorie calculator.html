@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://code.jquery.com/jquery-2.2.4.js'> </script>
+
+   
+    <link rel="stylesheet" type="text/css" href="calorie calculator.css">
+    <script src="jquery.js"></script>
+
+    <title> Calorie Calculator </title>
+   
+  </head>
+  
+
+
+  <body>
+
+    <main>
+
+      <header class="header_black">
+        <div class="title_header_black">  
+
+          Welcome  To Calorie Calculator
+
+        </div>
+
+      </header>
+
+        <header class="header_white">
+
+            <div class="title_header_white">    
+              <!-- Calorie Calculator -->
+        <img  id = "calorie_picture1"  src="https://img.etimg.com/photo/msid-86610086,quality-100/et-logo.jpg" alt=" calorie_calculator_pic"  >
+
+
+            </div>
+
+        </header>
+
+
+        <div class="left_content">
+         <img id = "calorie_picture2" src="https://media.istockphoto.com/vectors/calculator-with-apple-and-measuring-tape-vector-id914932994?k=20&m=914932994&s=612x612&w=0&h=ekr3uE0-2_9q3Si0FbpflxfRtrfMJv-viOTjXXwwCMU=" alt=" img ">
+
+        </div>
+
+            <div class="midle_content">
+                    <div class="request-information"> To make an exact calculation, we need some basic information from you:  </div>
+                
+                    <div class = box_genre_information > 
+                        <div class = "genre_information">  
+                           
+                           you are ?  <br>
+                             <select  class=" genre"    > 
+                              <option  > ---   </option>
+                            <option  id = "men">  Men </option>                                  
+                            <option  id=  "Women"  >  Women </option>
+                              
+                        </select>    
+          
+                        </div>
+                    </div>    
+                
+                    <div class = box_age_information > 
+                      <div class = "age_information">           
+                         Your age ? <br>
+                        <input type="text"  id="age"  > 
+                          
+                      </div>
+                  </div>     
+                    
+                  <div class = box_weight_information > 
+                    <div class = "weight_information">           
+                       Your weight ? <br>
+                      <input type="text"  id="weight" placeholder="your weight in kg " > 
+                        
+                    </div>
+                </div>     
+                  
+                <div class = box_tall_information > 
+                  <div class = "tall_information">           
+                    How tall are you ? <br>
+                    <input type="text"  id="tall"  placeholder="your tall in m" > 
+                      
+                  </div>
+              </div>    
+              
+              
+
+              <div class = box_daily_activity > 
+                <div class = "daily_activity">           
+                
+                  your daily activity   <select class= "activity" > 
+                  <option>  --- </option> 
+                  <option  id="not_very_active">  Not very active </option>                                  
+                  <option  id = "moderately_active">  Moderately active </option> 
+                  <option   id =  "active">  Active  </option> 
+                  <option id = "very_active"> Very active </option> 
+              </select>   
+                    
+                </div>
+            </div>     
+
+
+        <button  id = "button_calculate" >  Calculate      </button> 
+
+        <output  id = "needed_calorie">  Your total needed calories is :  </output>  
+
+
+        <button  id = "button_calculate_lose_weight" > Generate </button> 
+
+        <output  id = "needed_calorie_lose_weight">  Your needed calories to lose weight is :  </output>  
+
+
+        <button  id = "button_calculate_gain_weight" > Generate </button> 
+
+        <output  id = "needed_calorie_gain_weight">  Your needed calories to gain weight is :  </output>  
+
+<img id = "total_calorie" src=" file:///C:/Users/ahmed/OneDrive/Bureau/Project/Image/total%20calorie%20.png" alt=" total calorie ">
+
+<img id = "lower_calorie" src="file:///C:/Users/ahmed/OneDrive/Bureau/Project/Image/low_calorie%20.png" alt=" lower calorie ">
+
+<img id = "hight_calorie" src=" file:///C:/Users/ahmed/OneDrive/Bureau/Project/Image/hight_calorie.png" alt=" high calorie ">
+
+
+            </div>
+
+        </section>
+
+        <footer class="footer"> </footer>
+
+    </main>
+   
+  </body>
+
+
+
+  <script> 
+// this functions to hide 3 picture in the begening 
+
+$("#total_calorie").hide()
+$("#lower_calorie") .hide()
+$("#hight_calorie") .hide()
+
+
+  // this function allow us to store the input age
+  var age=" "
+$("#age").on('change', function() {
+   age =  $("#age").val()
+   age=age*1
+})
+
+
+// this function allow us to store the input weight
+var weight=" "
+$("#weight").on('change', function() {
+  weight =  $("#weight").val()
+  weight=weight*1
+})
+
+// this function allow us to store the input tall
+
+var tall = " "
+$("#tall").on('change', function() {
+  tall =  $("#tall").val()
+  tall=tall*1
+})
+
+
+// this function allow us to store in variable the  choice of the user  from the list  (gender)
+
+var selected_genre =""
+    $("select.genre").on( "change" ,function(){
+        selected_genre = $(this).children("option:selected").val();
+        // alert("You have selected the genre " + selected_genre);
+    })
+  
+  
+// this function allow us to store in variable the choice of the user  from the list  ( activity)
+
+var selected_activity = ""
+    $("select.activity").on("change" ,function(){
+     selected_activity = $(this).children("option:selected").val();
+        // alert("You have selected activity " + selected_activity);
+    })
+
+  
+    //This function checks from the user choice about his gender  and do the formulation needed
+    var result = 1
+$("#button_calculate").on("click" , function () { 
+  
+  if(selected_genre ==  "Men"  ) {
+     result = (13.7516 * weight) + (500.33 * tall) - (6.7550 * age) + 66.473 }
+
+   else if (selected_genre == "Women"){
+     result = (9.5634 * weight) + (184.96 * tall) - (4.6756 * age) + 655.0955 }
+   })
+
+   //This function checks from the user choice about his activity and do the formulation needed
+
+$("#button_calculate").on("click" , function () { 
+  if (selected_activity == "Not very active") {  result =result *1.3 }
+
+  else if (selected_activity == "Moderately active" ) {result =result *1.55}
+
+  else if (selected_activity == "Active" ) { result =result *1.72}
+
+  else if (selected_activity == "Very active " ) {result =result *1.9}
+
+  $("#needed_calorie").append(Math.floor(result) + " Calories ")
+  $("#total_calorie") .show()
+
+})
+
+
+ //This function reduce the total calories by 15% to loose weight 
+
+$("#button_calculate_lose_weight").on("click" , function () {
+  $("#needed_calorie_lose_weight").append((     Math.floor(result = result -(result *15/100)) + " Calories "))
+  $("#lower_calorie") .show()
+})
+
+//This function add  15%  to total calories to gain  weight 
+
+$("#button_calculate_gain_weight").on("click" , function () {
+ $("#needed_calorie_gain_weight").append((     Math.floor(result = result -(result *30/100)) + " Calories "))
+ $("#hight_calorie") .show()
+})
+
+ 
+  </script>
+</html>
